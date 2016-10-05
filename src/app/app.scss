@@ -1,0 +1,8 @@
+$fa-font-path: '/assets/fonts';
+$govuk-frontend-toolkit-image-path: '/assets/img/';
+$govuk-template-image-path: '/assets/img';
+$pdk-image-path: '/assets/img/';
+$nta-font-path: '/assets/fonts';
+
+@import "~govuk-elements-sass/public/sass/_govuk-elements";
+@import "~@govuk/platform-template/platform-template";
