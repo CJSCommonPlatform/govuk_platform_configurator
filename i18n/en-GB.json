@@ -1,0 +1,18 @@
+{
+    "pleadOnline" : "Plead online for a Transport for London offence",
+    "useThisServiceToPleaGuiltyOrNotGuilty": "Use this service to plead guilty or not guilty to a Transport for London (<abbr title=\"Transport for London\">TfL</abbr>) offence.",
+    "youMustBeEither_": "You must be either:",
+    "thePerson": "the person charged with the offence",
+    "anOfficial": "an official representative of the company charged with the offence",
+    "startNow": "Start now",
+    "beforeYouStart": "Before you start",
+    "toUseThisService": "To use this service you need:",
+    "theNoticeSentYou":"the notice <abbr title=\"Transport for London\">TfL</abbr> sent you",
+    "nin": "your National Insurance number",
+    "yourIncome": "details of your income",
+    "ongoings": "details of your outgoings, for example, rent or mortgage, household bills",
+    "ifYouHaveQuestions": "If you have questions about your case, <a href=\"https://courttribunalfinder.service.gov.uk/search/\" rel=\"external\">contact the court</a> dealing with it.",
+    "getHelp": "get help with making a plea online",
+    "elsewhere": "Elsewhere on the web",
+    "legalHelp": "Legal help and advice"
+}

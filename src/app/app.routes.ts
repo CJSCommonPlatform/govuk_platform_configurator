@@ -1,10 +1,9 @@
 import { Routes } from '@angular/router';
-import { Home } from './home';
-import { About } from './app.component';
+import { MainComponent } from './main/main.component';
+import { YourCaseComponent } from './+your-case/your-case.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: Home },
-  { path: 'about', component: About },
-  { path: '**', redirectTo: 'home' }
+  { path: '', component: MainComponent },
+  { path: 'your-case', component: YourCaseComponent , data: {'post': true}},
+  { path: '**', redirectTo: '' }
 ];

@@ -7,7 +7,7 @@
     "moduleResolution": "node",
     "outDir": "dist",
     "sourceMap": true,
-    "sourceRoot": "src",
+    "sourceRoot": "",
     "target": "es5",
     "lib": ["es6", "dom"],
     "types": [
@@ -18,13 +18,15 @@
       "express-serve-static-core",
       "mime",
       "node",
-      "serve-static",
-      "hammerjs"
+      "serve-static"
     ]
   },
   "exclude": [
     "node_modules",
     "!node_modules/@types/**/*.d.ts"
+  ],
+  "files": [
+    "typings/index.d.ts"
   ],
   "compileOnSave": false,
   "buildOnSave": false,

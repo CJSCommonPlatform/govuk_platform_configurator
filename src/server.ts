@@ -5,14 +5,12 @@ import * as path from 'path';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
+import { routes } from './app/app.routes';
 
 // Angular 2
 import { enableProdMode } from '@angular/core';
 // Angular 2 Universal
 import { createEngine } from 'angular2-express-engine';
-
-// App
-import { MainModule } from './main.node';
 
 // enable prod for faster renders
 enableProdMode();
@@ -26,30 +24,28 @@ app.set('views', __dirname);
 app.set('view engine', 'html');
 
 app.use(cookieParser('Angular 2 Universal'));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+ extended: true
+}));
 
 // Serve static files
 app.use('/assets', express.static(path.join(__dirname, 'assets'), {maxAge: 30}));
 app.use(express.static(path.join(ROOT, 'dist/client'), {index: false}));
 
-function ngApp(req, res) {
-  res.render('index', {
-    req,
-    res,
-    ngModule: MainModule,
-    preboot: false,
-    baseUrl: '/',
-    requestUrl: req.originalUrl,
-    originUrl: 'http://localhost:3000'
-  });
-}
-// Routes with html5pushstate
-// ensure routes match client-side-app
-app.get('/', ngApp);
-app.get('/about', ngApp);
-app.get('/about/*', ngApp);
-app.get('/home', ngApp);
-app.get('/home/*', ngApp);
+
+import { ngApp } from './ng-app';
+
+//API
+routes.forEach((route) => {
+  if (route.path === '**') {
+    return;
+  }
+
+  app.get('/' + route.path, ngApp);
+  if (route.data && route.data['post']) {
+    app.post('/' + route.path, ngApp);
+  }
+});
 
 
 app.get('*', function(req, res) {
@@ -63,3 +59,4 @@ app.get('*', function(req, res) {
 let server = app.listen(process.env.PORT || 3000, () => {
   console.log(`Listening on: http://localhost:${server.address().port}`);
 });
+

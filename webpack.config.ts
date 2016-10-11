@@ -4,31 +4,45 @@ var resolveNgRoute = require('@angularclass/resolve-angular-routes');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var commonConfig = {
+  entry: {
+    'ng2-translate': './node_modules/ng2-translate/bundles/ng2-translate.js'
+  },  
   resolve: {
     extensions: ['', '.ts', '.js', '.json']
   },
   module: {
+    preLoaders: [
+    ],
     loaders: [
-      // TypeScript
       { test: /\.ts$/, loaders: ['ts-loader', 'angular2-template-loader'] },
       { test: /\.html$/, loader: 'raw-loader' },
       { test: /\.css$/, loader: 'raw-loader' },
-      { test: /\.json$/, loader: 'json-loader' },
+      { test: /\.json$/, loader: 'raw-loader' },
       { test: /\.scss$/, loaders: ['raw', 'sass']},
-      { test: /\.(jpg|jpeg|gif|png)$/, loader: 'url?limit=1024&name=assets/img/[name].[ext]' },
-      { test: /\.(woff|woff2|eot|ttf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=1024&name=assets/fonts/[name].[ext]' }
-
-    ],
+      {test: /\.(jpg|jpeg|gif|png)$/, loader: 'url?limit=1024&name=govuk/images/[name].[ext]'},
+      {test: /\.(woff|woff2|eot|ttf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: 'url?limit=1024&name=govuk/stylesheets/fonts/images/[name].[ext]'}
+    ]
   },
   sassLoader: {
     includePaths: [
-      'node_modules/govuk-elements-sass/public/sass',
-      'node_modules/govuk_frontend_toolkit/stylesheets'
+      'node_modules/govuk-elements-sass/public/sass'
     ]
   },
   plugins: [
+    new webpack.ContextReplacementPlugin(
+      // The (\\|\/) piece accounts for path separators in *nix and Windows
+      /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
+      root('./src'),
+      resolveNgRoute(root('./src'))
+    ),
+    new CopyWebpackPlugin([
+      {
+        context: './',
+        from: 'i18n/**'
+      }
+    ]),
+    
   ]
-
 };
 
 
@@ -48,34 +62,12 @@ var clientConfig = {
   plugins: [
     new CopyWebpackPlugin([
       {
-        context: './node_modules/@govuk/platform-template/lib',
-        from: 'govuk_template/**/*.png',
-        to: 'assets/img',
-        flatten: true
+        context: './src',
+        from: 'govuk/images/**'
       },
       {
-        context: './node_modules/@govuk/platform-template/lib',
-        from: 'govuk_template/**/*.ico',
-        to: 'assets/img',
-        flatten: true
-      },
-      {
-        context: './node_modules/@govuk/platform-template/lib',
-        from: 'govuk_template/**/*.svg',
-        to: 'assets/img',
-        flatten: true
-      },
-      {
-        context: './node_modules/govuk_frontend_toolkit',
-        from: 'images/**/*.png',
-        to: 'assets/img',
-        flatten: true
-      },
-      {
-        context: './node_modules/@govuk/platform-template/assets',
-        from: 'fonts/*',
-        to: 'assets/fonts',
-        flatten: true
+        context: './src',
+        from: 'govuk/stylesheets/**'
       }
     ])
   ]
@@ -109,8 +101,11 @@ var defaultConfig = {
   },
   output: {
     publicPath: path.resolve(__dirname),
-    filename: 'index.js'
-  }
+    filename: 'server.js',
+    devtoolModuleFilenameTemplate        : '[absolute-resource-path]',
+    devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
+  },
+  devtool: '#source-map'
 };
 
 

@@ -1,8 +1,14 @@
-$fa-font-path: '/assets/fonts';
-$govuk-frontend-toolkit-image-path: '/assets/img/';
-$govuk-template-image-path: '/assets/img';
-$pdk-image-path: '/assets/img/';
-$nta-font-path: '/assets/fonts';
+// ==========================================================================
+// Plead online: Transport for London (imports)
+// ==========================================================================
 
-@import "~govuk-elements-sass/public/sass/_govuk-elements";
-@import "~@govuk/platform-template/platform-template";
+
+$path: "govuk/images/";
+
+
+// Import GOV.UK elements
+@import "../govuk/sass/govuk-elements";
+
+
+// Import online plea elements
+@import "../assets/online-plea/manifest";

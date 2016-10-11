@@ -1,0 +1,69 @@
+<div class="grid-row">
+
+
+  <div class="column-two-thirds">
+
+
+    <h1 class="heading-xlarge">{{ 'pleadOnline' | translate }}</h1>
+
+
+    <p [innerHTML]="'useThisServiceToPleaGuiltyOrNotGuilty' | translate"></p>
+
+
+    <span>{{ 'youMustBeEither_' | translate}}</span>
+
+
+    <ul class="list list-bullet">
+      <li>{{ 'thePerson' | translate }}</li>
+      <li>{{ 'anOfficial' | translate }}</li>
+    </ul>
+
+
+    <p><a class="button button-start" role="button" [routerLink]="['../your-case']">{{ 'startNow' | translate }}</a></p>
+
+    <h2 class="heading-medium">{{ 'beforeYouStart' | translate }}</h2>
+
+
+    <span>{{ 'toUseThisService' | translate }}</span>
+
+
+    <ul class="list list-bullet">
+      <li [innerHtml]="'theNoticeSentYou' | translate"></li>
+      <li>{{ 'nin' | translate }}</li>
+      <li>{{ 'yourIncome' | translate }}</li>
+      <li>{{ 'ongoings' | translate }}</li>
+    </ul>
+
+
+    <p [innerHtml]="'ifYouHaveQuestions' | translate"></p>
+
+
+    <p>You can <a href="" data-ui-sref="helping-you-plead-online">{{ 'getHelp' | translate}}</a>.</p>
+
+
+  </div>
+
+
+  <div class="column-third">
+
+
+    <div class="related">
+
+
+      <div class="related-section">
+
+        <h2 class="related-title">{{ 'elsewhere' | translate }}</h2>
+
+        <ul class="related-links">
+          <li><a href="http://www.lawsociety.org.uk/for-the-public/common-legal-issues/criminal/" rel="external">{{ 'legalHelp' | translate }}</a></li>
+        </ul>
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+</div>

@@ -1,5 +1,9 @@
-# govuk_platform_configurator
-A simple configuration tool to visualise platform services and dependencies
+# Angular 2 Universal Starter [![Universal Angular 2](https://img.shields.io/badge/universal-angular2-brightgreen.svg?style=flat)](https://github.com/angular/universal) 
+> Server-Side Rendering for Angular 2
+
+A minimal Angular 2 starter for Universal JavaScript using TypeScript 2 and Webpack 2
+
+> If you're looking for the Angular Universal repo go to [angular/universal](https://github.com/angular/universal)  
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
@@ -17,4 +21,3 @@ A simple configuration tool to visualise platform services and dependencies
 
 ## Watch files
 * `npm run watch` to build your client app and start a web server
-
